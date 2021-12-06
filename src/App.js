@@ -5,13 +5,12 @@ import { ethers } from 'ethers';
 import myEpicNft from './utils/MyEpicNFT.json';
 
 
-const TWITTER_HANDLE = '_buildspace';
-const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
+
 const OPENSEA_LINK = '';
 const TOTAL_MINT_COUNT = 50;
 
 
-const CONTRACT_ADDRESS = '0x0A11C74906506D4E07A8Af2E8D4830368D222382';
+const CONTRACT_ADDRESS = '0x8d096A5677E119113C94e96c67F97711a38e5D49';
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState('');
@@ -92,7 +91,7 @@ const App = () => {
         connectedContract.on('NewEpicNFTMinted', (from, tokenId) => {
           console.log(from, tokenId.toNumber());
           alert(
-            `Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`,
+            `Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link: https://testnets.opensea.io/assets/mumbai/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`,
           );
         });
 
@@ -106,7 +105,7 @@ const App = () => {
   };
 
   const askContractToMintNft = async () => {
-    const CONTRACT_ADDRESS = '0x0A11C74906506D4E07A8Af2E8D4830368D222382';
+    const CONTRACT_ADDRESS = '0x5ecaeacB1f7EEcBDf8CF6b40839C60754dAdF6Ef';
     try {
       const { ethereum } = window;
 
@@ -126,7 +125,7 @@ const App = () => {
         await nftTxn.wait();
 
         console.log(
-          `Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`,
+          `Mined, see transaction: https://mumbai.polygonscan.com/tx/${nftTxn.hash}`,
         );
       } else {
         console.log("Ethereum object doesn't exist!");
@@ -173,13 +172,6 @@ const App = () => {
           )}
         </div>
         <div className="footer-container">
-          {/* <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} /> */}
-          <a
-            className="footer-text"
-            href={TWITTER_LINK}
-            target="_blank"
-            rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
         </div>
       </div>
     </div>
